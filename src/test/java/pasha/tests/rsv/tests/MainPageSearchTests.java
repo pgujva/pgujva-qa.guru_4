@@ -4,22 +4,24 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageSearchTests {
-  @BeforeAll
-  static void setUp() {
+  @BeforeEach
+  void setUp() {
     SelenideLogger.addListener("allure", new AllureSelenide());
     Configuration.startMaximized = true;
     open("https://rsv-test.bizml.ru/");
   }
 
   @Test
-  public void testsearch() {
+  public void testSearchWebinar() {
     String webinar = "Вебинар";
     $(".search-button").click();
     $(".searching-input").clear();
@@ -28,4 +30,33 @@ public class MainPageSearchTests {
     $(".results-item").click();
     $(".app-body").$("div h1").shouldHave(text(webinar + "ы"));
   }
+
+  @Test
+  public void testSearchProjects() {
+    String project = "Проект";
+    $(".search-button").click();
+    $(".searching-input").clear();
+    $(".searching-input").val(project);
+    $(".searching-switcher").click();
+    $$(".categories-column").filterBy(text(project + "ы")).first().click();
+    $$(".results.SRWrapper.results").first().shouldHave(text(project + "ы"));
+    $(".results-item").shouldHave(text(project + "ы" + "\n" + "Перейти на страницу проектов"));
+    $(".results-item").click();
+    $(".app-body").$("div h1").shouldHave(text(project + "ы"));
+  }
+
+  @Test
+  public void testSearchfilterProjects() {
+    String project = "Проект";
+    $(".search-button").click();
+    $(".searching-input").clear();
+    $(".searching-input").val(project);
+    $(".searching-switcher").click();
+    $$(".categories-column").filterBy(text("Проекты")).first().click();
+    $$(".results.SRWrapper.results").first().shouldHave(text("Проекты"));
+    //$(".results-item").shouldHave(text(project + "ы" + "\n" + "Перейти на страницу проектов1"));
+    //$(".results-item").click();
+    //$(".app-body").$("div h1").shouldHave(text(project + "ы"));
+  }
+
 }
