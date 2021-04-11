@@ -1,3 +1,5 @@
+package pasha.test.fillformtests;
+
 public class PracticeFormData {
   private final String name;
   private final String lastname;
@@ -25,7 +27,7 @@ public class PracticeFormData {
     this.address = address;
     this.state = state;
     this.city = city;
-    
+
   }
 
   public String getName() {
