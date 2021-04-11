@@ -1,6 +1,9 @@
 package pasha.test.fillformtests;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -11,6 +14,7 @@ public class FillFormTest extends TestBase {
 
   @Test
   void successfulFillTest() {
+    SelenideLogger.addListener("allure", new AllureSelenide());
     Faker faker = new Faker();
     String name = faker.name().firstName();
     String lastname = faker.name().lastName();
