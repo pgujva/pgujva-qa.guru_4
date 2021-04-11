@@ -25,6 +25,7 @@ public class PracticeFormData {
     this.address = address;
     this.state = state;
     this.city = city;
+    
   }
 
   public String getName() {
