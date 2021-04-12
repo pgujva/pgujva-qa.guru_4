@@ -11,6 +11,7 @@ import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class MainPageSearchTests {
   @BeforeEach
@@ -45,18 +46,5 @@ public class MainPageSearchTests {
     $(".app-body").$("div h1").shouldHave(text(project + "ы"));
   }
 
-  @Test
-  public void testSearchfilterProjects() {
-    String project = "Проект";
-    $(".search-button").click();
-    $(".searching-input").clear();
-    $(".searching-input").val(project);
-    $(".searching-switcher").click();
-    $$(".categories-column").filterBy(text("Проекты")).first().click();
-    $$(".results.SRWrapper.results").first().shouldHave(text("Проекты"));
-    //$(".results-item").shouldHave(text(project + "ы" + "\n" + "Перейти на страницу проектов1"));
-    //$(".results-item").click();
-    //$(".app-body").$("div h1").shouldHave(text(project + "ы"));
-  }
 
 }
