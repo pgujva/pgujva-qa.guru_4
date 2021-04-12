@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class BaseStepSearchTests {
-  BaseSteps steps = new BaseSteps();
+public class BaseStepSearchTests extends BaseSteps{
   private final static String PROJECT = "Проект";
   private final static String BASE_URL = "https://rsv-test.bizml.ru/";
 
@@ -23,12 +22,12 @@ public class BaseStepSearchTests {
 
   @Test
   public void PageSearchTest() {
-    steps.openMainPage();
-    steps.openSearchWindow();
-    steps.choseFilter(PROJECT);
-    steps.shouldHaveTestProject(PROJECT);
-    steps.shouldHaveTestLinkProject(PROJECT);
-    steps.shouldHaveTestLinkTextProject(PROJECT);
+    openMainPage();
+    openSearchWindow();
+    choseFilter(PROJECT);
+    shouldHaveTestProject(PROJECT);
+    shouldHaveTestLinkProject(PROJECT);
+    shouldHaveTestLinkTextProject(PROJECT);
 
   }
 
