@@ -19,17 +19,6 @@ public class BaseStepSearchTests extends BaseSteps {
   private final static String PROJECT = "Проект";
   //private final static String BASE_URL = "https://rsv-test.bizml.ru";
 
-  @BeforeEach
-  void setUp() {
-
-    DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setCapability("browserName", "chrome");
-    capabilities.setCapability("browserVersion", "89.0");
-    capabilities.setCapability("enableVNC", true);
-    Configuration.browserCapabilities = capabilities;
-    Configuration.remote = "http://localhost:4444/wd/hub";
-  }
-
   @Test
   public void PageSearchTest() {
     openMainPage();

@@ -2,6 +2,8 @@ pasha/test/fillformtests/PracticeFormData.java
  pasha.test.fillformtests.PracticeFormData
 Steps/BaseSteps.java
  Steps.BaseSteps
+helpers/AttachmentHelper.java
+ helpers.AttachmentHelper
 pasha/test/fillformtests/TestBase.java
  pasha.test.fillformtests.TestBase
 pasha/tests/rsv/tests/MainPageSearchTests.java
